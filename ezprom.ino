@@ -16,7 +16,7 @@ void dispBytes(int, byte*, int);
 void memByteStreamRead(int, int, int);
 byte memByteRead(int);
 void binaryCtr(int);
-void sendByteStream(byte*);
+void sendByteStream(byte*, int);
 void sendByte(byte);
 byte readByte();
 void pulseClock(int);
@@ -100,7 +100,7 @@ byte memByteRead(int na, int add) {
   for (int i = 0; i < sets8; i++) {
     m[i] = (modded >> 8 * (sets8 - i - 1)) % 256;
   }
-  sendByteStream(m);
+  sendByteStream(m, sizeof(m));
   //pull latch low
   digitalWrite(SLA, LOW);
   byte rd = readByte();
@@ -112,7 +112,7 @@ byte memByteRead(int na, int add) {
 void binaryCtr(int d) {
   byte m[] = {0};
   while (true) {
-    sendByteStream(m);
+    sendByteStream(m, 1);
     delay(d);
     m[0] += 1;
   }
@@ -121,9 +121,8 @@ void binaryCtr(int d) {
 
 //sends a byte stream of data via shift regs
 //least significant byte first
-void sendByteStream(byte* b) {
-  int n = sizeof(b) / sizeof(b[0]);
-  for (int i = 1; i <= n ; i++) {
+void sendByteStream(byte* b, int numBytes) {
+  for (int i = 1; i <= numBytes ; i++) {
     sendByte(b[n - i]);
   }
   return;
