@@ -123,7 +123,7 @@ void binaryCtr(int d) {
 //least significant byte first
 void sendByteStream(byte* b, int numBytes) {
   for (int i = 1; i <= numBytes ; i++) {
-    sendByte(b[n - i]);
+    sendByte(b[numBytes - i]);
   }
   return;
 }
