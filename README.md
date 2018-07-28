@@ -55,7 +55,7 @@ Sets the parallel lines as input or output. Call will true to set as input or fa
 ### Serial Layer ###
 
 #### Serial ByteStream Layer ####
-10. void sendAddress(int na, int add)
+10. void sendAddress(int add)
 
 Write an address to the shift registers. Specify the address that will appear on the shift registers.
 
