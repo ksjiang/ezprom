@@ -1,11 +1,11 @@
 # EZPROM #
-A small Arduino library to read from and write to classic EEPROM chips, and to read from EPROM chips. Great for microprocessor hobbyists looking for low-cost ways to program for their platform.
+A small Arduino sketch with functions to read from and write to classic EEPROM chips, and to read from EPROM chips. Great for microprocessor hobbyists looking for low-cost ways to program for their platform.
 
 ## How to Use EZPROM ##
-To set up Arduino to interface with a parallel memory without modifications to the EZPROM library definitions, connect D2 to the chip enable pin of the memory, D3 to the clock inputs of the shift register(s), D4 to the serial input to the shift register (for multiple series shift registers, connect D4 only to the serial input of the initial register), D5 - D12 to the low 8 address lines of the memory, and D13 to the R / W* pin of the memory. If neccessary, however, pin definitions may be edited in the first lines of the library.
+To set up Arduino to interface with a parallel memory without modifications to EZPROM pin definitions, connect D2 to the chip enable pin of the memory, D3 to the clock inputs of the shift register(s), D4 to the serial input to the shift register (for multiple series shift registers, connect D4 only to the serial input of the initial register), D5 - D12 to the low 8 address lines of the memory, and D13 to the R / W* pin of the memory. If neccessary, however, pin definitions may be edited in the first lines of the library.
 
 ## Layers Upon Layers ##
-The EZPROM library features multiple "layers" of functions that successively add functionality to lower layers. (Here, "lower" means closer to the fundamental protocol.) Of course, the user is free to call functions from any layer but should most often remain at the higher layers. Below is a listing of the various layers and the functions that belong to them. Some functions belonging to the higher layers may still be under construction and thus are not yet available.
+EZPROM features multiple "layers" of functions that successively add functionality to lower layers. (Here, "lower" means closer to the fundamental protocol.) Of course, the user is free to call functions from any layer but should most often remain at the higher layers. Below is a listing of the various layers and the functions that belong to them. Some functions belonging to the higher layers may still be under construction and thus are not yet available.
 
 ### User Layer ###
 1. void memHexDump(int na, int startAddress, int numBytes)
