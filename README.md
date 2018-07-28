@@ -8,7 +8,7 @@ To set up Arduino to interface with a parallel memory without modifications to t
 The EZPROM library features multiple "layers" of functions that successively add functionality to lower layers. (Here, "lower" means closer to the fundamental protocol.) Of course, the user is free to call functions from any layer but should most often remain at the higher layers. Below is a listing of the various layers and the functions that belong to them. Some functions belonging to the higher layers may still be under construction and thus are not yet available.
 
 ### User Layer ###
-1. void memHexDump(int na, int startAddress, int numBytes)*
+1. void memHexDump(int na, int startAddress, int numBytes)
 
 Display a neatly formatted hex dump of a block of the memory. Specify the number of address lines being used, the address where the dump should begin, and the number of consecutive bytes that should be read.
 2. void memWriteFile(int na, FILE* src)*
@@ -78,4 +78,5 @@ Pulse the serial clock, shifting the shift registers. Specify the delay for the 
 
 ## Troubleshooting ##
 If the hexdump produces bytes that are consistent across a large block but are random, it is likely that the memory is not actually connected and thus data pins are floating on the read operation. Use an Ohmmeter to check all connections.
+
 If writing has no effect on the memory's readout, check that the R / W* signal is properly connected. If so, confirm that the chip is actually an EEPROM (EPROMs can be written to but not with this setup).
