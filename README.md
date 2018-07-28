@@ -11,7 +11,8 @@ The EZPROM library features multiple "layers" of functions that successively add
 1. void memHexDump(int na, int startAddress, int numBytes)
 
 Display a neatly formatted hex dump of a block of the memory. Specify the number of address lines being used, the address where the dump should begin, and the number of consecutive bytes that should be read.
-2. void memWriteFile(int na, FILE* src)*
+
+2. void memWriteFile(int na, FILE* src)
 
 Write an Intel HEX file to the memory. Specify the number of address lines being used as well as a handle to the HEX file. Note: this function does NOT check the checksums and will not verify the integrity of the HEX file.
 
