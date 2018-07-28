@@ -62,17 +62,17 @@ Write an address to the shift registers. Specify the number of address lines and
 
 Tests the serial bus by running a binary counter on the shift registers. Specify the delay between each update.
 
-12. *void sendByteStream(byte* b, int numBytes)
+12. void sendByteStream(byte* b, int numBytes)
 
 Sends a stream of bytes to the shift registers, with least significant byte sent first. Specify the pointer to the bytes and the number to be written (generally, numBytes == sizeOf(b)).
 
 #### Serial Byte Layer ####
-13. *void sendByte(byte b)
+13. void sendByte(byte b)
 
 Sends exactly one byte to the shift registers.
 
 #### Serial SubByte Layer ####
-14. *void pulseClock(int d)
+14. void pulseClock(int d)
 
 Pulse the serial clock, shifting the shift registers. Specify the delay for the shift (for most cases, a delay of 0 is desired).
 
