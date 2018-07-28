@@ -8,33 +8,33 @@ To set up Arduino to interface with a parallel memory without modifications to E
 EZPROM features multiple "layers" of functions that successively add functionality to lower layers. (Here, "lower" means closer to the fundamental protocol.) Of course, the user is free to call functions from any layer but should most often remain at the higher layers. Below is a listing of the various layers and the functions that belong to them. Some functions belonging to the higher layers may still be under construction and thus are not yet available.
 
 ### User Layer ###
-1. void memHexDump(int na, int startAddress, int numBytes)
+1. void memHexDump(int startAddress, int numBytes)
 
-Display a neatly formatted hex dump of a block of the memory. Specify the number of address lines being used, the address where the dump should begin, and the number of consecutive bytes that should be read.
+Display a neatly formatted hex dump of a block of the memory. Specify the address where the dump should begin and the number of consecutive bytes that should be read.
 
-2. void memWriteFile(int na, FILE* src)
+2. void memWriteFile(FILE* src)
 
-Write an Intel HEX file to the memory. Specify the number of address lines being used as well as a handle to the HEX file. Note: this function does NOT check the checksums and will not verify the integrity of the HEX file.
+Write an Intel HEX file to the memory. Specify the handle to the HEX file. Note: this function does NOT check the checksums and will not verify the integrity of the HEX file. More importantly, it does NOT check that the program fits within the address space determined by the number of address lines being used.
 
 ### Integrated Layer ###
 
 #### Integrated ByteStream Layer ####
-3. void memByteStreamRead(int na, byte* m, int startAddress, int numBytes)
+3. void memByteStreamRead(byte* m, int startAddress, int numBytes)
 
-Read a stream of consecutive bytes from the memory. Specify the number of address lines, the pointer to where the read bytes should be stored, the address of the memory where reading should begin, and the number of consecutive bytes that should be read.
+Read a stream of consecutive bytes from the memory. Specify the pointer to where the read bytes should be stored, the address of the memory where reading should begin, and the number of consecutive bytes that should be read.
 
-4. void memByteStreamWrite(int na, int startAdress, byte* m, int numBytes)
+4. void memByteStreamWrite(int startAdress, byte* m, int numBytes)
 
-Write a stream of consecutive bytes to the memory. Specify the number of address lines, the address of the memory where writing should begin, the pointer to where the source bytes are, and the number of consecutive bytes that should be written.
+Write a stream of consecutive bytes to the memory. Specify the address of the memory where writing should begin, the pointer to where the source bytes are, and the number of consecutive bytes that should be written.
 
 #### Integrated Byte Layer ####
-5. byte memByteRead(int na, int add)
+5. byte memByteRead(int add)
 
-Read a single byte from memory at a specific address. Specify the number of address lines as well as the read address.
+Read a single byte from memory at a specific address. Specify the read address.
 
-6. byte memByteWrite(int na, int add, byte data)
+6. byte memByteWrite(int add, byte data)
 
-Write a single byte to memory at a specific address. Specify the number of address lines, the write address, and the byte that will be written.
+Write a single byte to memory at a specific address. Specify the write address and the byte that will be written.
 
 ### Parallel Layer ###
 
@@ -57,7 +57,7 @@ Sets the parallel lines as input or output. Call will true to set as input or fa
 #### Serial ByteStream Layer ####
 10. void sendAddress(int na, int add)
 
-Write an address to the shift registers. Specify the number of address lines and the address that will appear on the shift registers.
+Write an address to the shift registers. Specify the address that will appear on the shift registers.
 
 11. void binaryCtr(int d)
 
