@@ -16,46 +16,63 @@ The EZPROM library features multiple "layers" of functions that successively add
 ### Integrated Layer ###
 
 #### Integrated ByteStream Layer ####
-*void memByteStreamRead(int na, byte* m, int startAddress, int numBytes)*
-  Read a stream of consecutive bytes from the memory. Specify the number of address lines, the pointer to where the read bytes should be stored, the address of the memory where reading should begin, and the number of consecutive bytes that should be read.
-*void memByteStreamWrite(int na, int startAdress, byte* m, int numBytes)*
-  Write a stream of consecutive bytes to the memory. Specify the number of address lines, the address of the memory where writing should begin, the pointer to where the source bytes are, and the number of consecutive bytes that should be written.
+1. *void memByteStreamRead(int na, byte* m, int startAddress, int numBytes)
+
+Read a stream of consecutive bytes from the memory. Specify the number of address lines, the pointer to where the read bytes should be stored, the address of the memory where reading should begin, and the number of consecutive bytes that should be read.
+
+2. *void memByteStreamWrite(int na, int startAdress, byte* m, int numBytes)
+
+Write a stream of consecutive bytes to the memory. Specify the number of address lines, the address of the memory where writing should begin, the pointer to where the source bytes are, and the number of consecutive bytes that should be written.
 
 #### Integrated Byte Layer ####
-*byte memByteRead(int na, int add)*
-  Read a single byte from memory at a specific address. Specify the number of address lines as well as the read address.
-*byte memByteWrite(int na, int add, byte data)*
-  Write a single byte to memory at a specific address. Specify the number of address lines, the write address, and the byte that will be written.
+3. *byte memByteRead(int na, int add)
+
+Read a single byte from memory at a specific address. Specify the number of address lines as well as the read address.
+
+4. *byte memByteWrite(int na, int add, byte data)
+
+Write a single byte to memory at a specific address. Specify the number of address lines, the write address, and the byte that will be written.
 
 ### Parallel Layer ###
 
 #### Parallel Byte Layer ####
-*byte readByte()*
-  Reads a byte from the parallel bus.
-*void writeByte(byte b)*
-  Writes a byte to the parallel bus.
+5. *byte readByte()
+
+Reads a byte from the parallel bus.
+
+6. *void writeByte(byte b)
+
+Writes a byte to the parallel bus.
 
 #### Parallel SubByte Layer ####
-*void setPortsAs(bool in)*
-  Sets the parallel lines as input or output. Call will true to set as input or false to set as output.
+7. *void setPortsAs(bool in)
+
+Sets the parallel lines as input or output. Call will true to set as input or false to set as output.
 
 ### Serial Layer ###
 
 #### Serial ByteStream Layer ####
-*void sendAddress(int na, int add)*
-  Write an address to the shift registers. Specify the number of address lines and the address that will appear on the shift registers.
-*void binaryCtr(int d)*
-  Tests the serial bus by running a binary counter on the shift registers. Specify the delay between each update.
-*void sendByteStream(byte* b, int numBytes)*
-  Sends a stream of bytes to the shift registers, with least significant byte sent first. Specify the pointer to the bytes and the number to be written (generally, numBytes == sizeOf(b)).
+8. *void sendAddress(int na, int add)
+
+Write an address to the shift registers. Specify the number of address lines and the address that will appear on the shift registers.
+
+9. *void binaryCtr(int d)
+
+Tests the serial bus by running a binary counter on the shift registers. Specify the delay between each update.
+
+10. *void sendByteStream(byte* b, int numBytes)
+
+Sends a stream of bytes to the shift registers, with least significant byte sent first. Specify the pointer to the bytes and the number to be written (generally, numBytes == sizeOf(b)).
 
 #### Serial Byte Layer ####
-*void sendByte(byte b)*
-  Sends exactly one byte to the shift registers.
+11. *void sendByte(byte b)
+
+Sends exactly one byte to the shift registers.
 
 #### Serial SubByte Layer ####
-*void pulseClock(int d)*
-  Pulse the serial clock, shifting the shift registers. Specify the delay for the shift (for most cases, a delay of 0 is desired).
+12. *void pulseClock(int d)
+
+Pulse the serial clock, shifting the shift registers. Specify the delay for the shift (for most cases, a delay of 0 is desired).
 
 ## Troubleshooting ##
 If the hexdump produces bytes that are consistent across a large block but are random, it is likely that the memory is not actually connected and thus data pins are floating on the read operation. Use an Ohmmeter to check all connections.
