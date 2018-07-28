@@ -65,7 +65,7 @@ Tests the serial bus by running a binary counter on the shift registers. Specify
 
 12. void sendByteStream(byte* b, int numBytes)
 
-Sends a stream of bytes to the shift registers, with least significant byte sent first. Specify the pointer to the bytes and the number to be written (generally, numBytes == sizeOf(b)).
+Sends a stream of bytes to the shift registers, with least significant byte sent first. Specify the pointer to the bytes and the number to be written (generally, numBytes == sizeof(b)).
 
 #### Serial Byte Layer ####
 13. void sendByte(byte b)
